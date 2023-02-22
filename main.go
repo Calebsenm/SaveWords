@@ -1,7 +1,6 @@
 
 package main 
 
-
 import "fmt"
 
 func main(){
@@ -38,6 +37,5 @@ func main(){
   } else {
     fmt.Println("Error")
   }
-
 
 }
