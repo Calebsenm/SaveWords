@@ -1,7 +1,10 @@
 
 package main 
 
-import "fmt"
+import (
+  "fmt"
+ op "savewords/Options"
+)
 
 func main(){
 
@@ -26,8 +29,20 @@ func main(){
 
   
   if choise == 1{
-     fmt.Println("Your choise ", Options[choise])
- 
+    fmt.Println("Your choise ", Options[choise])
+    
+    var userr string
+    var passwd string 
+    
+    fmt.Print("Put Your User : ")
+    fmt.Scan(&userr)
+    
+    fmt.Print("Put Your password : ")
+    fmt.Scan(&passwd)
+    
+    dataUser := op.Connection {User: userr, Pass: passwd }
+    dataUser.Connection_Data()
+
   } else if choise == 2{
       fmt.Println("Your choise ", Options[choise])
 

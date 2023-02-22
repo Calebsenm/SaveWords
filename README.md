@@ -28,3 +28,21 @@ mysql -u root -ppassword
 
 # ready ... Now create the database for the use 
 
+- Create a new database:
+SQL Code :
+
+CREATE DATABASE Words_App;
+
+#Table for the users 
+
+CREATE TABLE users (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+    );
+
+
+
+
+
+
