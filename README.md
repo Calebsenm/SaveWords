@@ -2,13 +2,13 @@
 
 # Save Words 
 
-this is a simple crud using MYSQL and GO ,
+This is a simple crud using MYSQL and GO ,
 the idea of this program is a aplication for save words
 in english and spanish and examples and allow to show and 
 delete words 
 
 # configuration MYSQL 
-i use docker for MYSQL here the configuration in docker 
+I use docker for MYSQL here the configuration in docker 
 
 The first thing is Dowload the image in docker :
 
@@ -33,6 +33,7 @@ SQL Code :
 
 CREATE DATABASE Words_App;
 
+use  Words_App;
 #Table for the users 
 
 CREATE TABLE users (
@@ -40,6 +41,15 @@ CREATE TABLE users (
     username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL
     );
+
+
+INSERT INTO users (username,password)
+VALUES("caleb","12345");
+
+
+
+
+
 
 
 

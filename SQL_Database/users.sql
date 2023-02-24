@@ -8,3 +8,5 @@ CREATE TABLE users (
   );
 
 
+INSERT INTO users (username,password)
+VALUES ("caleb","12345");
