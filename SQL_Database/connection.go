@@ -13,20 +13,11 @@ import (
 
 func  GetDatabase( ) (db *sql.DB, e error) {
   
-  usuario := "root"
-  pass := ""
-	host := "tcp(127.0.0.1:3306)"
-	nombreBaseDeDatos := "Words_App"
-	// Debe tener la forma usuario:contraseña@protocolo(host:puerto)/nombreBaseDeDatos
-	db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@%s/%s", usuario, pass, host, nombreBaseDeDatos))
-	
-
-
-  if err != nil{
-    return nil , err ;
-  }else {
-    fmt.Println("connect yes ")
-  }
-  
+  db, err :=  sql.Open("mysql", "root:password@tcp(127.0.0.1:3306)/Test")
+	if err != nil {
+		panic(err.Error())
+  } else  {
+    fmt.Println("Connect");
+  } 
   return db,nil 
 }

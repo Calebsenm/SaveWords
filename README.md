@@ -2,7 +2,7 @@
 
 # Save Words 
 
-This is a simple crud using MYSQL and GO ,
+This is a simple crud using MYSQL and GO    ,
 the idea of this program is a aplication for save words
 in english and spanish and examples and allow to show and 
 delete words 
@@ -68,12 +68,17 @@ volumes:
 
 6. Create the Table for the users 
 ```shell
+
 CREATE TABLE users (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL
     );
+
+
 ```
+
+
 
 7. Insert Data  inside of the database 
 
@@ -82,9 +87,6 @@ INSERT INTO users (username,password)
 VALUES("caleb","12345");
 ```
 8. Finish :)
-
-
-
 
 
 

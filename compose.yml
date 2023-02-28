@@ -8,20 +8,22 @@
 # Docker version 23.0.1
 # docker-compose version 1.29.2,
 
+#Puede haber tantos servicios como querramos; framework web, servidor web,
+
+# version of docker compose  v2.3.3
 
 version: '3.7'
 
-#Puede haber tantos servicios como querramos; framework web, servidor web,
 services:
   db:
-    container_name: mysql 
+    container_name: mysql
     image: mysql:8.0
     cap_add:
-      - SYS_NICE 
+      - SYS_NICE
     restart: always
-    environment: 
+    environment:
       - MYSQL_DATABASE=Test
-      - NYSQL_ROOT_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
     ports:
       - '3306:3306'
     volumes:
@@ -29,6 +31,8 @@ services:
 volumes:
   db:
     driver: local
+
+
 
 
 
