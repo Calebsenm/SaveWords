@@ -11,7 +11,7 @@ delete words
 # you can use docker compose 
 
 
-  1. Comfigure a file for docker compose
+  1. Configure a file for docker compose
   for example: we need a file compose.yml in the directory proyect 
 ```shell
 # version of docker compose  v2.3.3
