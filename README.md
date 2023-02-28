@@ -40,9 +40,12 @@ volumes:
 ```shell
     $ docker-compose up -d
 ```
-  3. Connect to docker container and use your password: password 
+  3. Connect to docker container and Connect to mysql use your password: password 
 ```shell
-   $ mysql -h 127.0.0.1 -u root -P 3306 -p
+  # Enter in the docker container
+  $ docker exec -it mysql bash
+  # Connect to mysql service, and enter in password 12345678
+  $ mysql -h 127.0.0.1 -u root -P 3306 -p
 ```
   4. Other commands maybe needed:
   
