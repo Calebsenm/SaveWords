@@ -8,46 +8,77 @@ in english and spanish and examples and allow to show and
 delete words 
 
 # configuration MYSQL 
-I use docker for MYSQL here the configuration in docker 
+# you can use docker compose 
 
-The first thing is Dowload the image in docker :
 
-docker pull mysql 
+  1. Comfigure a file for docker compose
+  for example: we need a file compose.yml in the directory proyect 
+```shell
+# version of docker compose  v2.3.3
 
-2 the next step is build a container whith root user and password password 
+version: '3.7'
 
-docker run --name mysql-database -e MYSQL_ROOT_PASSWORD=password -d mysql:latest
+services:
+  db:
+    container_name: mysql
+    image: mysql:8.0
+    cap_add:
+      - SYS_NICE
+    restart: always
+    environment:
+      - MYSQL_DATABASE=Test
+      - MYSQL_ROOT_PASSWORD=password
+    ports:
+      - '3306:3306'
+    volumes:
+      - db:/var/lib/mysql
+volumes:
+  db:
+    driver: local
+```
+  2. Run docker :
+```shell
+    $ docker-compose up -d
+```
+  3. Connect to docker container and use your password: password 
+```shell
+   $ mysql -h 127.0.0.1 -u root -P 3306 -p
+```
+  4. Other commands maybe needed:
+  
+```shell
+   
+  # you can stop service by the command
+  $ docker stop mysql
+  # you can start service by the command
+  $ docker start mysql
+  # you can restart service by the command
+  $ docker restart mysql
 
-3 You can  then acces the MYSQL container command line using.
+```
 
-docker exec -it mysql-database bash
+5. Ready ... Now Use the database
 
-4 connect to mysql use :
+```shell
+  use  Words_App;   
+```
 
-mysql -u root -ppassword
-
-# ready ... Now create the database for the use 
-
-- Create a new database:
-SQL Code :
-
-CREATE DATABASE Words_App;
-
-use  Words_App;
-#Table for the users 
-
+6. Create the Table for the users 
+```shell
 CREATE TABLE users (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL
     );
+```
 
+7. Insert Data  inside of the database 
 
+```shell   
 INSERT INTO users (username,password)
 VALUES("caleb","12345");
-
-
-
+```
+8. Finish :)
 
 
 
