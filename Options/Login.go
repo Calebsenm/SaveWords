@@ -12,7 +12,6 @@ type User struct{
 
 }
 
-
 type Connection struct{
   User string
   Pass string

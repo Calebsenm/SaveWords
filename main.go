@@ -7,46 +7,26 @@ import (
 )
 
 var (
+  // second menu for the app 
   OptionsMenu = map[int]string{
     1 : "Input  Words ",
     2 : "See Words ",
     3 : "Options ",
     4 : "Salir ",
-  }
+  };
+  // this is for opcions an Login 
+  OptionsStart = map[int] string{
+    1 : "Login",
+    2 : "Register",
+    3 : "Options ",
+  } 
 )
 
-func menu(){
-  var option int  
-  for {
-
-    for value , item := range OptionsMenu {
-      fmt.Println(value, " ", item)
-    }
-    
-    fmt.Print("Input a option  - > ");
-    fmt.Scan(&option)
-
-    if option == 4{
-      fmt.Println("Has Finalizado El programa ");
-      break
-    }
-  }
-}
-
-
 func main(){
-
-  // this is for opcions an Login 
-  Options := map[int] string{
-    1 : "Login"    ,
-    2 : "Register"  ,
-    3 : "Options " ,
-  } 
-
   // Print the opcions 
   fmt.Println("Welcome ! Plese enter Login ")
-  
-  for index,value := range Options{
+  // Print principal menu 
+  for index,value := range OptionsStart{
     fmt.Println(" ",index , " ", value)
   }
 
@@ -55,9 +35,45 @@ func main(){
   fmt.Print("  > ")
   fmt.Scan(&choise)
 
-  // Options 
+  // Options this is for making a Login  
   if choise == 1{
-    fmt.Println("Your choise ", Options[choise])
+    LoginUser(choise , OptionsStart );
+
+  // Register A user 
+  } else if choise == 2{
+    RegisterUser(choise,OptionsStart);
+
+  //opcions 
+  } else if  choise == 3 {
+    OptionsUser(choise,OptionsStart); 
+  } else {
+    fmt.Println("Error")
+  }
+}
+
+
+// for the Menú 
+func menu() int {
+  var option int  
+  for {
+    for value , item := range OptionsMenu {
+      fmt.Println(value, " ", item)
+    }
+    fmt.Print("Input a option  - > ");
+    fmt.Scan(&option)
+
+    if option == 4{
+      fmt.Println("Has Finalizado El programa ");
+      break
+    }
+  }
+  return option 
+}
+
+// 1 Login 
+func LoginUser(choise int , Options map[int]string ) int {
+
+  fmt.Println("Your choise ", Options[choise])
     
     var userr string
     var passwd string 
@@ -70,22 +86,46 @@ func main(){
     
     dataUser := op.Connection {User: userr, Pass: passwd }
     connectonCheck := dataUser.Connection_Data()
+    
     if connectonCheck{
-      menu();
+      optionsMenuPrincipal :=  menu();
+      return optionsMenuPrincipal ;
+    
     } else{
       fmt.Println("Crea un usuario ");
+    }   
+  return 0 
+}
+
+// 2 register 
+func RegisterUser(choise int , Options map[int]string ){
+  fmt.Println("Your choise ", Options[choise])
+  op.Register_Data(); 
+}
+
+// 3 Options 
+func OptionsUser(choise int , Options map[int]string ){
+
+  fmt.Println("Your choise ", Options[choise]) 
+ 
+  for{ 
+    var remove string  
+    fmt.Println("Do you want to remove a user ? y or n ");
+    fmt.Scan(&remove);
+    if remove == "y"{
+      fmt.Println("What User do you wanto to remove ? "); 
+      op.PrintUsersData();
     }
 
-  } else if choise == 2{
-      fmt.Println("Your choise ", Options[choise])
-      op.Register_Data(); 
-
-
-  } else if  choise == 3 {
-      fmt.Println("Your choise ", Options[choise])
- 
-  } else {
-    fmt.Println("Error")
+    var exit string
+    fmt.Println("Do you want to exit ? y  or n ");
+    fmt.Scan(&exit)
+    if exit == "y"{
+      break
+    }
   }
-
 }
+
+
+
+
