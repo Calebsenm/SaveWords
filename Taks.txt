@@ -2,15 +2,19 @@
 
 make the function Login  = yes 
 make the function Register = yes  
+  
+  finish  -  1 the function Login need check if user is Registered and if not call a Register  
+
 
 make the function Options: complete 
   need a Option for make a respald of a database in a tex.csv
   need save all the data 
   need update the data 
 
+
+
 To DO """
 
- 1 the function Login need check if user is Registered and if not call a Register 
  2 complete the function Options need remove a user from a dabase
 
 

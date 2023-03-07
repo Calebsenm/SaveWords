@@ -3,7 +3,9 @@ package main
 
 import (
   "fmt"
- op "savewords/Options"
+  op "savewords/Options"
+  "savewords/SQL_Database"
+ 
 )
 
 var (
@@ -61,6 +63,18 @@ func menu() int {
     }
     fmt.Print("Input a option  - > ");
     fmt.Scan(&option)
+    
+    if option == 1 {
+     op.InsertWords(); 
+    }
+
+    if  option ==  2{
+
+    }
+
+    if option  == 3{
+
+    }
 
     if option == 4{
       fmt.Println("Has Finalizado El programa ");
@@ -92,10 +106,12 @@ func LoginUser(choise int , Options map[int]string ) int {
       return optionsMenuPrincipal ;
     
     } else{
-      fmt.Println("Crea un usuario ");
+        fmt.Println("El usuario ",userr ,"  No se encuentra registrado Crea un usuario ");
+        RegisterUser(choise,OptionsStart);
     }   
   return 0 
 }
+
 
 // 2 register 
 func RegisterUser(choise int , Options map[int]string ){
@@ -115,14 +131,40 @@ func OptionsUser(choise int , Options map[int]string ){
     if remove == "y"{
       fmt.Println("What User do you wanto to remove ? "); 
       op.PrintUsersData();
-    }
+      
+       
+      var theOption string 
+      fmt.Println("Please Input the name for remove ");
+      fmt.Scan(&theOption)
+      // remove the data 
+     
+      db , err := SQL_Database.GetDatabase();
+      if err != nil {
+        fmt.Println("Errror",nil , err );
+      }
+      
+      defer db.Close();
+      deleteUsers, err := db.Prepare("DELETE  FROM users WHERE username = ?");
+      
+      if err != nil {
+		    fmt.Println(err);
+	    }
 
-    var exit string
-    fmt.Println("Do you want to exit ? y  or n ");
-    fmt.Scan(&exit)
-    if exit == "y"{
-      break
+      defer deleteUsers.Close()
+      _ , err = deleteUsers.Exec(theOption)
+      
+      if err !=  nil {
+        fmt.Println("Error  No se puede eliminar ");
+      }
+        
     }
+      var exit string
+      fmt.Println("Do you want to exit ? y  or n ");
+      fmt.Scan(&exit)
+      
+      if exit == "y"{
+        break
+      }
   }
 }
 
