@@ -4,6 +4,7 @@ make the function Login  = yes
 make the function Register = yes  
   
   finish  -  1 the function Login need check if user is Registered and if not call a Register  
+  finish  -  complete the function Options need remove a user from a dabase
 
 
 make the function Options: complete 
@@ -15,7 +16,6 @@ make the function Options: complete
 
 To DO """
 
- 2 complete the function Options need remove a user from a dabase
 
 
 make a words table in sql 

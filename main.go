@@ -4,8 +4,7 @@ package main
 import (
   "fmt"
   op "savewords/Options"
-  "savewords/SQL_Database"
- 
+  "savewords/SQL_Database" 
 )
 
 var (
@@ -54,7 +53,10 @@ func main(){
 }
 
 
-// for the Menú 
+
+
+
+// for the Menú for choise the desition to InsertWords and UpdateWords  
 func menu() int {
   var option int  
   for {
@@ -69,11 +71,11 @@ func menu() int {
     }
 
     if  option ==  2{
-
+      op.SeeWords();
     }
 
     if option  == 3{
-
+      op.UpdateWords();
     }
 
     if option == 4{
